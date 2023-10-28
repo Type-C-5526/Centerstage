@@ -52,8 +52,7 @@ import org.firstinspires.ftc.teamcode.util.PID;
  * Remove or comment out the @Disabled line to add this OpMode to the Driver Station OpMode list
  */
 
-@TeleOp(name="Basic: Linear OpMode", group="Linear OpMode")
-@Disabled
+@TeleOp(name="Elevator Test", group="Linear OpMode")
 public class Elevator extends LinearOpMode {
 
     // Declare OpMode members.
@@ -71,8 +70,8 @@ public class Elevator extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        elevator1 = new PID(0.5,0,0,2200, 0);
-
+        elevator1 = new PID(0.005,0,0,2200, 0);
+        elevator2 = new PID(0.005, 0, 0, 0,-2200);
 
 
 
@@ -118,6 +117,7 @@ public class Elevator extends LinearOpMode {
 
             // Send calculated power to wheels
             leftDrive.setPower(elevator1.calculate(1000, leftDrive.getCurrentPosition()));
+            rightDrive.setPower(elevator2.calculate(-1000, rightDrive.getCurrentPosition()));
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
