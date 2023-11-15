@@ -18,6 +18,7 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
         DcMotor backLeftMotor = hardwareMap.dcMotor.get("bl");
         DcMotor frontRightMotor = hardwareMap.dcMotor.get("fr");
         DcMotor backRightMotor = hardwareMap.dcMotor.get("br");
+        DcMotor intake = hardwareMap.dcMotor.get("intake");
 
         // Reverse the right side motors. This may be wrong for your setup.
         // If your robot moves backwards when commanded to go forwards,
@@ -72,6 +73,16 @@ public class FieldCentricMecanumTeleOp extends LinearOpMode {
             backLeftMotor.setPower(backLeftPower);
             frontRightMotor.setPower(frontRightPower);
             backRightMotor.setPower(backRightPower);
+
+            if(gamepad1.a){
+                intake.setPower(1);
+            }
+            else if(gamepad1.b){
+                intake.setPower(-1);
+            }
+            else {
+                intake.setPower(0);
+            }
         }
     }
 }
