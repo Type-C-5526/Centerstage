@@ -19,7 +19,7 @@ public class FieldCentricMecanum  {
 
     private final IMU imu;
 
-    public FieldCentricMecanum(DcMotor _frontLeftMotor, DcMotor _backLeftMotor, DcMotor _frontRightMotor, DcMotor _backRightMotor, IMU _IMU) throws InterruptedException {
+    public FieldCentricMecanum(DcMotor _frontLeftMotor, DcMotor _backLeftMotor, DcMotor _frontRightMotor, DcMotor _backRightMotor, IMU _IMU) {
         // Declare our motors
         // Make sure your ID's match your configuration
         frontLeftMotor = _frontLeftMotor;
