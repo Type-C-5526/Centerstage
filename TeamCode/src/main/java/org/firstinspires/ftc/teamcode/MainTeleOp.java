@@ -17,24 +17,59 @@ public class MainTeleOp extends LinearOpMode {
 
         SubsystemWrapper subsystemWrapper = new SubsystemWrapper(hardwareMap);
         if (isStopRequested()) return;
+        waitForStart();
 
         while (opModeIsActive()) {
 
             //Drive
-            subsystemWrapper.drive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
-
+            {
+                subsystemWrapper.drive(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+            }
             //Intake
-            if(gamepad1.a){
-                subsystemWrapper.setIntakePower(-1);
+            {
+                if (gamepad1.a) {
+                    subsystemWrapper.setIntakePower(-1);
+                    subsystemWrapper.setArmPosition(0);
+                } else if (gamepad1.b) {
+                    subsystemWrapper.setArmPosition(-40);
+                    subsystemWrapper.setIntakePower(.6);
+                } else {
+                    subsystemWrapper.setIntakePower(0);
+                }
             }
-            else if(gamepad1.b){
-                subsystemWrapper.setIntakePower(1);
+            //Set Elevator
+            {
+                if (gamepad1.right_bumper) {
+                    subsystemWrapper.elevatorPosition(2200);
+                    subsystemWrapper.setArmPosition(40);
+                }
+                if (gamepad1.dpad_down) {
+                    subsystemWrapper.elevatorPosition(650);
+                    subsystemWrapper.setArmPosition(40);
+                }
+                if (gamepad1.dpad_right) {
+                    subsystemWrapper.elevatorPosition(1150);
+                    subsystemWrapper.setArmPosition(40);
+                }
+                if (gamepad1.dpad_up) {
+                    subsystemWrapper.elevatorPosition(1750);
+                    subsystemWrapper.setArmPosition(40);
+                }
+                if (gamepad1.dpad_left) {
+                    subsystemWrapper.elevatorPosition(0);
+                    subsystemWrapper.setArmPosition(0);
+                }
             }
-            else {
-                subsystemWrapper.setIntakePower(0);
+            //Plane
+            {
+                if(gamepad1.x){
+                    subsystemWrapper.setLauncherPosition(1);
+                }
+                else {
+                    subsystemWrapper.setLauncherPosition(0);
+                }
             }
-
-
+            //
 
         }
     }
