@@ -15,7 +15,6 @@ public class SubsystemWrapper {
     private DcMotor elevatorRight;
     private DcMotor m_intake;
     private Servo m_plane;
-    private Servo m_arm;
     private PID m_lPID;
     private PID m_rPID;
     private boolean m_elevatorActive;
@@ -36,7 +35,6 @@ public class SubsystemWrapper {
         elevatorRight = m_hM.dcMotor.get("er");
         m_intake = m_hM.dcMotor.get("intake");
         m_plane = m_hM.servo.get("avion");
-        m_arm = m_hM.servo.get("arm");
 
         m_fl  = m_hM.dcMotor.get("fl");
         m_fr  = m_hM.dcMotor.get("fr");
@@ -75,11 +73,6 @@ public class SubsystemWrapper {
         m_plane.setPosition(p);
     }
 
-    /**
-     *
-     * @param p
-     */
-    public void setArmPosition(double p){m_arm.setPosition(p);}
     /**
      *
      * @param p

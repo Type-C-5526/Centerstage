@@ -29,10 +29,8 @@ public class MainTeleOp extends LinearOpMode {
             {
                 if (gamepad1.a) {
                     subsystemWrapper.setIntakePower(-1);
-                    subsystemWrapper.setArmPosition(0);
                 } else if (gamepad1.b) {
-                    subsystemWrapper.setArmPosition(-40);
-                    subsystemWrapper.setIntakePower(.6);
+                    subsystemWrapper.setIntakePower(1);
                 } else {
                     subsystemWrapper.setIntakePower(0);
                 }
@@ -40,24 +38,19 @@ public class MainTeleOp extends LinearOpMode {
             //Set Elevator
             {
                 if (gamepad1.right_bumper) {
-                    subsystemWrapper.elevatorPosition(2200);
-                    subsystemWrapper.setArmPosition(40);
+                    subsystemWrapper.elevatorPosition(1900);
                 }
                 if (gamepad1.dpad_down) {
                     subsystemWrapper.elevatorPosition(650);
-                    subsystemWrapper.setArmPosition(40);
                 }
                 if (gamepad1.dpad_right) {
                     subsystemWrapper.elevatorPosition(1150);
-                    subsystemWrapper.setArmPosition(40);
                 }
                 if (gamepad1.dpad_up) {
                     subsystemWrapper.elevatorPosition(1750);
-                    subsystemWrapper.setArmPosition(40);
                 }
                 if (gamepad1.dpad_left) {
                     subsystemWrapper.elevatorPosition(0);
-                    subsystemWrapper.setArmPosition(0);
                 }
             }
             //Plane
